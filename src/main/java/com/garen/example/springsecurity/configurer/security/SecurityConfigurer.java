@@ -18,7 +18,12 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 配置任何URL都需要登录，登录方式为：表单登录
-        http.formLogin().and().authorizeRequests().anyRequest().authenticated();
+        http.formLogin().loginPage("/signin") //登录页地址
+                .loginProcessingUrl("/signin/form") //登录表单提交地址。默认UsernamePasswordAuthenticationFilter只处理/login请求。
+                .and().authorizeRequests()
+                .antMatchers("/signin", "/signin/form").permitAll() // 配置登录页不拦截，否则会死循环
+                .anyRequest().authenticated()
+                .and().csrf().disable(); // 关闭CSRF防攻击功能
     }
 
 }
