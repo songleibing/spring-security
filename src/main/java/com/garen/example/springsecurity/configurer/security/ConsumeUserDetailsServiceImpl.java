@@ -10,9 +10,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author leibing.song
+ * @since 2019-01-28
+ */
 @Slf4j
 @Service
-public class ConsumeUserDetailsService implements UserDetailsService {
+public class ConsumeUserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;

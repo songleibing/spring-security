@@ -10,6 +10,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+/**
+ * @author leibing.song
+ * @since 2019-01-28
+ */
 @Configuration
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
@@ -27,12 +31,15 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 配置任何URL都需要登录，登录方式为：表单登录
-        http.formLogin().loginPage("/signin") //登录页地址
-                .loginProcessingUrl("/signin/form") //登录表单提交地址。默认UsernamePasswordAuthenticationFilter只处理/login请求。
+        //登录页地址
+        http.formLogin().loginPage("/signin")
+                //登录表单提交地址。默认UsernamePasswordAuthenticationFilter只处理/login请求。
+                .loginProcessingUrl("/signin/form")
                 .successHandler(successHandler)
                 .failureHandler(failureHandler)
                 .and().authorizeRequests()
-                .antMatchers("/signin", "/signin/form").permitAll() // 配置登录页不拦截，否则会死循环
+                // 配置登录页不拦截，否则会死循环
+                .antMatchers("/signin", "/signin/form").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable(); // 关闭CSRF防攻击功能
     }

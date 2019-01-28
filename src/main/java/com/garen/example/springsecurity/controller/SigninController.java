@@ -34,7 +34,7 @@ public class SigninController {
      */
     @RequestMapping("/signin")
     public ResponseEntity handleAPP() {
-        HashMap<String, String> body = new HashMap<String, String>() {{
+        HashMap<String, String> body = new HashMap<String, String>(2) {{
             this.put("respCode", "00009");
             this.put("respDesc", "请先登录！");
         }};
