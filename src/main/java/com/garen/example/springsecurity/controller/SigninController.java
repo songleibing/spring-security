@@ -40,4 +40,19 @@ public class SigninController {
         }};
         return new ResponseEntity(body, HttpStatus.UNAUTHORIZED);
     }
+
+//    @RequestMapping("/me")
+//    public Object me() {
+//        return SecurityContextHolder.getContext().getAuthentication();
+//    }
+//
+//    @RequestMapping("/me")
+//    public Object me(Authentication authentication) {
+//        return authentication;
+//    }
+//
+//    @RequestMapping("/me")
+//    public Object me(@AuthenticationPrincipal UserDetails userDetails) {
+//        return userDetails;
+//    }
 }
