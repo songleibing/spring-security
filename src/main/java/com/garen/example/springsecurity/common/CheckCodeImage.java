@@ -43,8 +43,8 @@ public class CheckCodeImage {
         graphics.fillRect(0, 0, width, height);
 
         // 画干扰线
-        graphics.setColor(Color.BLACK);
-        for (int i = 1; i <= 30; i++) {
+        graphics.setColor(Color.GRAY);
+        for (int i = 1; i <= 50; i++) {
             int x = random.nextInt(width);
             int y = random.nextInt(height);
             graphics.drawLine(x, y, x + i, y + i);
